@@ -7,10 +7,12 @@ public class Score : MonoBehaviour
 {
     int score;
     public Text textScore;
+    public SpriteRenderer sprite;
+    public bool isGameWin = false;
     // Start is called before the first frame update
     void Start()
     {
-       
+        sprite.enabled = false;
         
     }
 
@@ -23,5 +25,10 @@ public class Score : MonoBehaviour
     {
         score = score + scoreValue;
         Debug.Log(score);
+        if(score>20)
+        {
+            sprite.enabled = true;
+            isGameWin = true;
+        }
     }
 }

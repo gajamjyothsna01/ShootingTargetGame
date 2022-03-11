@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject targetPrefab;
+    public Score score;
   
     // Start is called before the first frame update
     void Start()
@@ -13,12 +14,17 @@ public class GameManagerScript : MonoBehaviour
         //Randomly generating the cross hair
         //SpawnMethod();
         InvokeRepeating("SpawnMethod",1,5); //Which method you want to repeat and start at which time and repeat rate time(duration).
+        score = GameObject.Find("ScoreManager").GetComponent<Score>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(score.isGameWin == true )
+        {
+            CancelInvoke();
+        }
        
     }
 
